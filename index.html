@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop-Watch and Timer</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="tab">
+    <button class="tablinks" id="default" onclick="clickHandle(event, 'Timer')">Timer</button>
+    <button class="tablinks" onclick="clickHandle(event, 'StopWatch')">Stop Watch</button>
+  </div>
+
+  <div id="Timer" class="tabcontent">
+    5m 00s
+  </div>
+
+  <div id="StopWatch" class="tabcontent">
+    0s 00
+  </div>
+
+  <div class="BottomButtons">
+      <button class="buttons start-stop-SW">Start</button>
+      <button class="buttons reset-SW">Reset</button>
+  </div>
+
+
+<script src="./st.js"></script>
+</body>
+</html>
+
