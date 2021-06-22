@@ -1,4 +1,4 @@
 # Stop-Watch-and-Timer
-This contains HTML , SCC, Js code for stop watch and timer
+This repo contains HTML , SCC and JS code for Stop-watch and Timer
 
-For running fork the repo and Open index.htm in a browser.
+For running the code, fork the repo and Open index.html in a browser.
