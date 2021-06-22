@@ -28,36 +28,34 @@
 .BottomButtons{
     display: flex;
 }
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  text-align: center;
+  height: 60px;
+  padding-top: 40px;
+  font-size: 30px;
+}
+
 
 .buttons{
 width: 10%;
 height: 50px;
-font-size: 20px;;
+font-size: 20px;
+padding-top: 0;
+cursor: pointer;
 }
 
 
-  .tab button.active {
-    font-weight: bold;
-    color: rgb(108, 108, 238);
-    border-bottom: 2px solid rgb(108, 108, 238);
-  }
+.tab button.active {
+  font-weight: bold;
+  color: rgb(108, 108, 238);
+  border-bottom: 2px solid rgb(108, 108, 238);
+}
   
-  .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-    text-align: center;
-    height: 60px;
-    padding-top: 40px;
-  }
-
-  #StopWatch{
-    font-size: 30px;
-  }
-  #Timer
-  {
-    font-size: 30px;
-  }
+ 
+  
 
   
