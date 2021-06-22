@@ -56,15 +56,46 @@
   let NumberOfWindows = 0; // Current window id
   const ButtonDiv = document.body;
 
+  function NewWindowHTML(){
+
+     // Using innerHTML
+    
+    /*var Window = document.createElement(`div`);
+    Window.setAttribute(`class`, `Window${NumberOfWindows}`);
 
 
-  function NewWindowHTML() {
+
+    Window.innerHTML = `<div class="tab">
+        <button class="tablinks${NumberOfWindows}" id="default${NumberOfWindows}" onclick="clickHandle(event, "Timer${NumberOfWindows}","TBStart${NumberOfWindows}","TBStop${NumberOfWindows}","HideTabs${NumberOfWindows}","tablinks${NumberOfWindows}")">Timer</button>
+        <button class="tablinks${NumberOfWindows}" onclick="clickHandle(event, "StopWatch${NumberOfWindows}","SWBStart${NumberOfWindows}","SWBStop${NumberOfWindows}","HideTabs${NumberOfWindows}","tablinks${NumberOfWindows}")">Stop Watch</button>
+      </div>
+    
+      <div id="Timer${NumberOfWindows}" class="tabcontent HideTabs${NumberOfWindows}">
+        5m 00s 00
+      </div>
+    
+      <div id="StopWatch${NumberOfWindows}" class="tabcontent HideTabs${NumberOfWindows}">
+        0s 00
+      </div>
+    
+      <div class="BottomButtons">
+          <button id="SWBStart${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons start-stop-SW${NumberOfWindows}">Start</button>
+          <button id="SWBStop${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons reset-SW${NumberOfWindows}">Reset</button>
+          <button id="TBStart${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons start-stop-TI${NumberOfWindows}">Start</button>
+          <button id="TBStop${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons reset-TI${NumberOfWindows}">Reset</button>
+      </div>`
+
+      ButtonDiv.insertBefore(Window, AddWindow); */
+
+
+
+    // Using Create HTML Tags functions
     var Window = document.createElement(`div`);
     Window.setAttribute(`class`, `Window${NumberOfWindows}`);
-  
+
     var tagTab = document.createElement(`div`);
     tagTab.setAttribute(`class`, `tab`);
-  
+
     var tagTablink = document.createElement(`button`);
     tagTablink.setAttribute(`class`, `tablinks${NumberOfWindows}`);
     tagTablink.setAttribute(`id`, `default${NumberOfWindows}`);
@@ -73,9 +104,9 @@
       `clickHandle(event, "Timer${NumberOfWindows}","TBStart${NumberOfWindows}","TBStop${NumberOfWindows}","HideTabs${NumberOfWindows}","tablinks${NumberOfWindows}")`
     );
     tagTablink.appendChild(document.createTextNode(`Timer ${NumberOfWindows}`));
-  
+
     tagTab.appendChild(tagTablink);
-  
+
     var tagtablink2 = document.createElement(`button`);
     tagtablink2.setAttribute(`class`, `tablinks${NumberOfWindows}`);
     tagtablink2.setAttribute(
@@ -83,28 +114,28 @@
       `clickHandle(event, "StopWatch${NumberOfWindows}","SWBStart${NumberOfWindows}","SWBStop${NumberOfWindows}","HideTabs${NumberOfWindows}","tablinks${NumberOfWindows}")`
     );
     tagtablink2.appendChild(document.createTextNode(`Stop Watch ${NumberOfWindows}`));
-  
+
     tagTab.appendChild(tagtablink2);
-  
+
     Window.appendChild(tagTab);
-  
+
     var tagTimer = document.createElement(`div`);
     tagTimer.setAttribute(`id`, `Timer${NumberOfWindows}`);
     tagTimer.setAttribute(`class`, `tabcontent HideTabs${NumberOfWindows}`);
     tagTimer.appendChild(document.createTextNode(`5m 00s 00`));
-  
+
     Window.appendChild(tagTimer);
-  
+
     var tagSW = document.createElement(`div`);
     tagSW.setAttribute(`id`, `StopWatch${NumberOfWindows}`);
     tagSW.setAttribute(`class`, `tabcontent HideTabs${NumberOfWindows}`);
     tagSW.appendChild(document.createTextNode(`0s 00`));
-  
+
     Window.appendChild(tagSW);
-  
+
     var tagBottom = document.createElement(`div`);
     tagBottom.setAttribute(`class`, `BottomButtons`);
-  
+
     var StartSW = document.createElement(`button`);
     StartSW.setAttribute(`id`, `SWBStart${NumberOfWindows}`);
     StartSW.setAttribute(
@@ -113,7 +144,7 @@
     );
     StartSW.appendChild(document.createTextNode(`Start`));
     tagBottom.appendChild(StartSW);
-  
+
     var StopSW = document.createElement(`button`);
     StopSW.setAttribute(`id`, `SWBStop${NumberOfWindows}`);
     StopSW.setAttribute(
@@ -122,7 +153,7 @@
     );
     StopSW.appendChild(document.createTextNode(`Reset`));
     tagBottom.appendChild(StopSW);
-  
+
     var StartTI = document.createElement(`button`);
     StartTI.setAttribute(`id`, `TBStart${NumberOfWindows}`);
     StartTI.setAttribute(
@@ -131,7 +162,7 @@
     );
     StartTI.appendChild(document.createTextNode(`Start`));
     tagBottom.appendChild(StartTI);
-  
+
     var StopTI = document.createElement(`button`);
     StopTI.setAttribute(`id`, `TBStop${NumberOfWindows}`);
     StopTI.setAttribute(
@@ -140,11 +171,13 @@
     );
     StopTI.appendChild(document.createTextNode(`Reset`));
     tagBottom.appendChild(StopTI);
-  
+
     Window.appendChild(tagBottom);
-  
-    ButtonDiv.insertBefore(Window, AddButton);
+
+    ButtonDiv.insertBefore(Window, AddWindow);
+
   }
+
 
   function StopWatchListeners() {
     const CurrentTime_SW = document.querySelector(`#StopWatch${NumberOfWindows}`); // Stopwatch time
@@ -237,18 +270,19 @@
   function initializeTimerInstance() {
   
     NumberOfWindows++;
-    
+
     NewWindowHTML();
     
-    document.getElementById(`default${NumberOfWindows}`).click(); // default tab selection (I am taking Timer as a default tab currently)
     
     StopWatchListeners();
         
     TimerListeners();
+    document.getElementById(`default${NumberOfWindows}`).click(); // default tab selection (I am taking Timer as a default tab currently)
+
   }
   
   document
-    .getElementById("AddButton")
+    .getElementById("AddWindow")
     .addEventListener(`click`, initializeTimerInstance); // Add new timer button listener
   
   
