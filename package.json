@@ -1,0 +1,26 @@
+{
+  "name": "stop-watch-timer",
+  "version": "1.0.0",
+  "description": "This repo contains HTML , CSS and JavaScript code for Stop-watch and Timer",
+  "main" : "./src/index.js",
+  "private": true,
+  "scripts" : {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manthanpatel14/Stop-Watch-and-Timer.git"
+  },
+  "author": "Manthan Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manthanpatel14/Stop-Watch-and-Timer/issues"
+  },
+  "homepage": "https://github.com/manthanpatel14/Stop-Watch-and-Timer#readme",
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
