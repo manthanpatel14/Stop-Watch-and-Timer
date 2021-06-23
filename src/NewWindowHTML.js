@@ -1,26 +1,26 @@
-function NewWindowHTML(NOF) {
+function NewWindowHTML(NOW) {
     const ButtonDiv = document.body;
     var Window = document.createElement(`div`);
-    Window.setAttribute(`class`, `Window${NOF}`);
+    Window.setAttribute(`class`, `Window${NOW}`);
 
     Window.innerHTML = `<div class="tab">
-        <button class="tablinks${NOF}" id="TimerTab${NOF}">Timer</button>
-        <button class="tablinks${NOF}" id="StopWatchTab${NOF}">Stop Watch</button>
+        <button class="tablinks${NOW}" id="TimerTab${NOW}">Timer</button>
+        <button class="tablinks${NOW}" id="StopWatchTab${NOW}">Stop Watch</button>
       </div>
     
-      <div id="Timer${NOF}" class="tabcontent HideTabs${NOF}">
+      <div id="Timer${NOW}" class="tabcontent HideTabs${NOW}">
         5m 00s 00
       </div>
     
-      <div id="StopWatch${NOF}" class="tabcontent HideTabs${NOF}">
+      <div id="StopWatch${NOW}" class="tabcontent HideTabs${NOW}">
         0s 00
       </div>
     
       <div class="BottomButtons">
-          <button id="SWBStart${NOF}" class="HideTabs${NOF} buttons start-stop-SW${NOF}">Start</button>
-          <button id="SWBStop${NOF}" class="HideTabs${NOF} buttons reset-SW${NOF}">Reset</button>
-          <button id="TBStart${NOF}" class="HideTabs${NOF} buttons start-stop-TI${NOF}">Start</button>
-          <button id="TBStop${NOF}" class="HideTabs${NOF} buttons reset-TI${NOF}">Reset</button>
+          <button id="SWBStart${NOW}" class="HideTabs${NOW} buttons start-stop-SW${NOW}">Start</button>
+          <button id="SWBStop${NOW}" class="HideTabs${NOW} buttons reset-SW${NOW}">Reset</button>
+          <button id="TBStart${NOW}" class="HideTabs${NOW} buttons start-stop-TI${NOW}">Start</button>
+          <button id="TBStop${NOW}" class="HideTabs${NOW} buttons reset-TI${NOW}">Reset</button>
       </div>`
 
     ButtonDiv.insertBefore(Window, document.getElementById("AddWindow"));
