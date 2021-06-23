@@ -1,3 +1,6 @@
+
+import {NewWindowHTML} from './NewWindowHTML.js';
+
 function clickHandle(evt, tabName, BIDStart, BIDStop, HideTabs, HideLinks) {
     // Function for switching tabs
     let i, tabcontent, tablinks;
@@ -55,35 +58,7 @@ function MilisecondsToString(ElsTime) {
 }
 
 let NumberOfWindows = 0;
-const ButtonDiv = document.body;
 
-function NewWindowHTML() {
-
-    var Window = document.createElement(`div`);
-    Window.setAttribute(`class`, `Window${NumberOfWindows}`);
-
-    Window.innerHTML = `<div class="tab">
-        <button class="tablinks${NumberOfWindows}" id="TimerTab${NumberOfWindows}">Timer</button>
-        <button class="tablinks${NumberOfWindows}" id="StopWatchTab${NumberOfWindows}">Stop Watch</button>
-      </div>
-    
-      <div id="Timer${NumberOfWindows}" class="tabcontent HideTabs${NumberOfWindows}">
-        5m 00s 00
-      </div>
-    
-      <div id="StopWatch${NumberOfWindows}" class="tabcontent HideTabs${NumberOfWindows}">
-        0s 00
-      </div>
-    
-      <div class="BottomButtons">
-          <button id="SWBStart${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons start-stop-SW${NumberOfWindows}">Start</button>
-          <button id="SWBStop${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons reset-SW${NumberOfWindows}">Reset</button>
-          <button id="TBStart${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons start-stop-TI${NumberOfWindows}">Start</button>
-          <button id="TBStop${NumberOfWindows}" class="HideTabs${NumberOfWindows} buttons reset-TI${NumberOfWindows}">Reset</button>
-      </div>`
-
-    ButtonDiv.insertBefore(Window, document.getElementById("AddWindow"));
-}
 
 function TabSwitchListeners() {
     document.getElementById(`TimerTab${NumberOfWindows}`).addEventListener("click", function (event) {
@@ -181,7 +156,7 @@ function initializeTimerInstance() {
 
     NumberOfWindows++;
 
-    NewWindowHTML();
+    NewWindowHTML(NumberOfWindows);
 
     TabSwitchListeners();
 
