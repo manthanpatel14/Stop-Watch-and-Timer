@@ -20,7 +20,7 @@ function clickHandle(evt, tabName, BIDStart, BIDStop, HideTabs, HideLinks) {
     evt.currentTarget.className += ` active`; // setting current tab active
 }
 
-window.clickHandle = clickHandle;
+//window.clickHandle = clickHandle;
 
 function MilisecondsToString(ElsTime) {
     let days = Math.floor(ElsTime / 86400000);
@@ -62,10 +62,9 @@ function NewWindowHTML() {
     var Window = document.createElement(`div`);
     Window.setAttribute(`class`, `Window${NumberOfWindows}`);
 
-
     Window.innerHTML = `<div class="tab">
-        <button class="tablinks${NumberOfWindows}" id="default${NumberOfWindows}" onclick='clickHandle(event, "Timer${NumberOfWindows}","TBStart${NumberOfWindows}","TBStop${NumberOfWindows}","HideTabs${NumberOfWindows}","tablinks${NumberOfWindows}")'>Timer</button>
-        <button class="tablinks${NumberOfWindows}" onclick='clickHandle(event, "StopWatch${NumberOfWindows}","SWBStart${NumberOfWindows}","SWBStop${NumberOfWindows}","HideTabs${NumberOfWindows}","tablinks${NumberOfWindows}")'>Stop Watch</button>
+        <button class="tablinks${NumberOfWindows}" id="TimerTab${NumberOfWindows}">Timer</button>
+        <button class="tablinks${NumberOfWindows}" id="StopWatchTab${NumberOfWindows}">Stop Watch</button>
       </div>
     
       <div id="Timer${NumberOfWindows}" class="tabcontent HideTabs${NumberOfWindows}">
@@ -86,7 +85,15 @@ function NewWindowHTML() {
     ButtonDiv.insertBefore(Window, document.getElementById("AddWindow"));
 }
 
+function TabSwitchListeners() {
+    document.getElementById(`TimerTab${NumberOfWindows}`).addEventListener("click", function (event) {
+        clickHandle(event, `Timer${NumberOfWindows}`, `TBStart${NumberOfWindows}`, `TBStop${NumberOfWindows}`, `HideTabs${NumberOfWindows}`, `tablinks${NumberOfWindows}`);
+    });
 
+    document.getElementById(`StopWatchTab${NumberOfWindows}`).addEventListener("click", function (event) {
+        clickHandle(event, `StopWatch${NumberOfWindows}`, `SWBStart${NumberOfWindows}`, `SWBStop${NumberOfWindows}`, `HideTabs${NumberOfWindows}`, `tablinks${NumberOfWindows}`);
+    });
+}
 
 function StopWatchListeners() {
     const CurrentTime_SW = document.querySelector(`#StopWatch${NumberOfWindows}`);
@@ -176,12 +183,12 @@ function initializeTimerInstance() {
 
     NewWindowHTML();
 
-
+    TabSwitchListeners();
 
     StopWatchListeners();
 
     TimerListeners();
-    document.getElementById(`default${NumberOfWindows}`).click(); // default tab selection (I am taking Timer as a default tab currently)
+    document.getElementById(`TimerTab${NumberOfWindows}`).click(); // default tab selection (I am taking Timer as a default tab currently)
 
 }
 
