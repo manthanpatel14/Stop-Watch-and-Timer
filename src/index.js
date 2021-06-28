@@ -5,12 +5,6 @@ import {TimerListeners} from './TimerListeners.js'
 
 let NumberOfWindows = 0;
 
-
-
-
-
-
-
 function initializeTimerInstance() {
 
     NumberOfWindows++;
