@@ -1,25 +1,68 @@
-import {NewWindowHTML} from './NewWindowHTML.js';
-import {TabSwitchListeners} from './TabSwitchListeners.js'
-import {StopWatchListeners} from './StopWatchListeners.js'
-import {TimerListeners} from './TimerListeners.js'
+import ReactDOM from "react-dom";
+import React, {useState, useEffect, useRef} from "react";
+import css from './style.css'
 
-let NumberOfWindows = 0;
+function Timer({timerid, DeleteTimer}) {
 
-function initializeTimerInstance() {
+    const [timer, setTimer] = useState(0);
+    const interval = useRef(null);
 
-    NumberOfWindows++;
 
-    NewWindowHTML(NumberOfWindows);
+    useEffect(function () {
+        interval.current = setInterval(function () {
+            setTimer((prevTimer) => prevTimer + 1);
+        }, 1000);
 
-    TabSwitchListeners(NumberOfWindows);
+        return () => {
+             clearInterval(interval.current);
+        }
+    }, []);
+    return (
+        <div id={timerid}>
+            <div className="tabcontent">{timer}</div>
 
-    StopWatchListeners(NumberOfWindows);
-
-    TimerListeners(NumberOfWindows);
-    document.getElementById(`TimerTab${NumberOfWindows}`).click(); // default tab selection (I am taking Timer as a default tab currently)
-
+            <div className="BottomButtons">
+            <button
+                className="buttons "
+                onClick={function () {
+                    DeleteTimer(timerid);
+                }}
+            >
+                Delete Timer
+            </button>
+        </div>
+</div>
+);
 }
 
-document
-    .getElementById("AddWindow")
-    .addEventListener(`click`, initializeTimerInstance); // Add a new window
+function App() {
+    const [timers, setTimers] = useState([]);
+
+    const DeleteTimer = (id) => {
+        setTimers((prevTimers) => prevTimers.filter((timerId) => timerId !== id));
+    };
+
+    return (
+        <div>
+            <h1>Timer App</h1>
+            {timers.map((timer) => (
+                <Timer key={timer} DeleteTimer={DeleteTimer} timerid={timer}/>
+            ))}
+            <button
+                className="buttons AddWindow"
+                onClick={function () {
+                    if (timers.length > 0)
+                        setTimers((prevTimer) => [
+                            ...prevTimer,
+                            prevTimer[prevTimer.length - 1] + 1,
+                        ]);
+                    else setTimers([1]);
+                }}
+            >
+                Add Timer
+            </button>
+        </div>
+    );
+}
+
+ReactDOM.render(<App/>, document.getElementById("App"));
