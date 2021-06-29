@@ -1,44 +1,12 @@
 import ReactDOM from "react-dom";
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState} from "react";
 import css from './style.css'
-
-function Timer({timerid, DeleteTimer}) {
-
-    const [timer, setTimer] = useState(0);
-    const interval = useRef(null);
-
-
-    useEffect(function () {
-        interval.current = setInterval(function () {
-            setTimer((prevTimer) => prevTimer + 1);
-        }, 1000);
-
-        return () => {
-             clearInterval(interval.current);
-        }
-    }, []);
-    return (
-        <div id={timerid}>
-            <div className="tabcontent">{timer}</div>
-
-            <div className="BottomButtons">
-            <button
-                className="buttons "
-                onClick={function () {
-                    DeleteTimer(timerid);
-                }}
-            >
-                Delete Timer
-            </button>
-        </div>
-</div>
-);
-}
+import Timer from "./Timer";
 
 function App() {
     const [timers, setTimers] = useState([]);
 
-    const DeleteTimer = (id) => {
+    const deleteTimer = (id) => {
         setTimers((prevTimers) => prevTimers.filter((timerId) => timerId !== id));
     };
 
@@ -46,7 +14,7 @@ function App() {
         <div>
             <h1>Timer App</h1>
             {timers.map((timer) => (
-                <Timer key={timer} DeleteTimer={DeleteTimer} timerid={timer}/>
+                <Timer key={timer} deleteTimer={deleteTimer} timerId={timer}/>
             ))}
             <button
                 className="buttons AddWindow"
